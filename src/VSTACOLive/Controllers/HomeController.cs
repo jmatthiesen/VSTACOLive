@@ -6,6 +6,7 @@ using live.asp.net.Models;
 using live.asp.net.Services;
 using live.asp.net.ViewModels;
 using Microsoft.AspNet.Mvc;
+using System.Collections.Generic;
 
 namespace live.asp.net.Controllers
 {
@@ -24,7 +25,7 @@ namespace live.asp.net.Controllers
         public async Task<IActionResult> Index(bool? disableCache)
         {
             var liveShowDetails = await _liveShowDetails.LoadAsync();
-            var showList = await _showsService.GetRecordedShowsAsync(User, disableCache ?? false);
+            var showList = new ShowList() { Shows = new List<Show>() };// await _showsService.GetRecordedShowsAsync(User, disableCache ?? false);
 
             return View(new HomeViewModel
             {
@@ -45,7 +46,7 @@ namespace live.asp.net.Controllers
             return liveShowDetails;
         }
 
-        [Route("/error")]
+        [Route("/live/error")]
         public IActionResult Error()
         {
             return View();

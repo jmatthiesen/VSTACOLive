@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .jumbotron {
-    background: #000 url(home-bg.jpg) top center repeat-x;
+    background: #5c2d91;
     background-size: 920px;
     color: #fff;
     min-height: 350px;
@@ -27,6 +27,24 @@ h1, h2, h3, h4, h5, h6 {
         background-size: 1440px;
     }
 }
+
+/* Used with the VS image sprite to show just the VS logo on the page.
+    TODO: Simplify this in a future version.
+*/
+#siteLogoLink > a {
+    display:inline-block;
+    text-indent: -999px;
+}
+
+#siteLogoLink > a::before {
+    background: url('../images/VSImageSprite.png?v=635805485122953252') no-repeat scroll -251px 0;
+    width: 160px;
+    content: "";
+    display: block;
+    height: 28px;
+    overflow: hidden;
+}
+
 
 h2 a, h2 a:hover, h2 a:focus, h2 a:active, h2 a:visited {
     color: #fff;

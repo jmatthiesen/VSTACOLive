@@ -13,6 +13,8 @@ using Microsoft.Dnx.Runtime;
 using Microsoft.Framework.Configuration;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
+using Microsoft.AspNet.FileProviders;
+using System.IO;
 
 namespace live.asp.net
 {
@@ -31,7 +33,7 @@ namespace live.asp.net
 
             if (_env.IsDevelopment())
             {
-                builder.AddUserSecrets();
+                //builder.AddUserSecrets();
                 builder.AddApplicationInsightsSettings(developerMode: true);
             }
 
@@ -76,7 +78,13 @@ namespace live.asp.net
             }
         }
 
+        // https://github.com/aspnet/Hosting/issues/416
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        {
+            app.Map("/live", (app1) => this.ConfigureInner(app1, env, loggerFactory));
+        }
+
+        public void ConfigureInner(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.MinimumLevel = LogLevel.Warning;
             loggerFactory.AddConsole();
@@ -103,7 +111,7 @@ namespace live.asp.net
 
             app.UseIISPlatformHandler();
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new Microsoft.AspNet.StaticFiles.StaticFileOptions() { FileProvider = new PhysicalFileProvider(Path.Combine(env.WebRootPath, "../live")) });
 
             app.UseCookieAuthentication(options =>
             {

@@ -66,12 +66,12 @@ namespace live.asp.net.Formatters
             /* BEGIN:VCALENDAR
                VERSION:2.0
                BEGIN:VEVENT
-               UID:aspnet@microsoft.com
-               DESCRIPTION:ASP.NET Community Standup
+               UID:vscordovatools@microsoft.com
+               DESCRIPTION:A live stream broadcast with the Visual Studio Tools for Apache Cordova team, answering your questions.
                DTSTART:20150804T170000Z
                DTEND:20150804T035959Z
-               LOCATION:https://live.asp.net/
-               SUMMARY:ASP.NET Community Standup
+               LOCATION:http://taco.visualstudio.com/live
+               SUMMARY:Visual Studio Tools for Apache Cordova, Live Q&A
                END:VEVENT
                END:VCALENDAR */
 
@@ -79,12 +79,12 @@ namespace live.asp.net.Formatters
                 "BEGIN:VCALENDAR\r\n" +
                 "VERSION:2.0\r\n" +
                 "BEGIN:VEVENT\r\n" +
-                "UID:aspnet@microsoft.com\r\n" +
+                "UID:vscordovatools@microsoft.com\r\n" +
                 "DTSTART:" + nextShowDateUtc?.ToString(_dateTimeFormat) + "\r\n" +
                 "DTEND:" + nextShowDateUtc?.AddMinutes(30).ToString(_dateTimeFormat) + "\r\n" +
-                "SUMMARY:ASP.NET Community Standup\r\n" +
-                "DESCRIPTION:\r\n" +
-                "LOCATION:https://live.asp.net/\r\n" +
+                "SUMMARY:Visual Studio Tools for Apache Cordova, Live Q&A\r\n" +
+                "DESCRIPTION:A live stream broadcast with the Visual Studio Tools for Apache Cordova team, answering your questions.\r\n" +
+                "LOCATION:http://taco.visualstudio.com/live/\r\n" +
                 "END:VEVENT\r\n" +
                 "END:VCALENDAR\r\n");
         }

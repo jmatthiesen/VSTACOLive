@@ -1,5 +1,5 @@
 {
-  "webroot": "wwwroot",
+  "webroot": "live",
   "userSecretsId": "aspnet5-live.asp.net-20150723035013",
   "version": "1.0.0-*",
   "compilationOptions": {

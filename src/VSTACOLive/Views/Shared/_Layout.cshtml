@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <meta name="description" content="The weekly ASP.NET Community Standup covers live community Q&amp;A, product team discussion, and the most recent updates. Hosted by Scott Hanselman, Damian Edwards, and Jon Galloway. Recordings of previous meetings are available." />
+    <meta name="description" content="The weekly, live streamed, question and answer meetup for the Visual Studio Tools for Apache Cordova covers live community Q&amp;A, and the most recent updates. Hosted by Jordan Matthiesen. Recordings of previous meetings are available." />
     <link rel="shortcut icon" href="~/favicon.ico" />
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -18,7 +18,7 @@
               asp-fallback-test-class="invisible"
               asp-fallback-test-property="visibility"
               asp-fallback-test-value="hidden" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-file-version="true" />
     </environment>
     <partial name="_AnalyticsHead" />
 </head>
@@ -41,15 +41,13 @@
                 <div class="col-md-6">
                     <nav class="clearfix">
                         <ul>
-                            <li><a href="https://www.asp.net/privacy">Privacy Statement</a></li>
-                            <li><a href="https://www.asp.net/terms-of-use">Terms of Use</a></li>
-                            <li><a href="https://github.com/aspnet/live.asp.net">Source Code</a></li>
-                            <li><a href="https://github.com/aspnet/live.asp.net/issues">Issue Tracker</a></li>
+                            <li><a href="https://go.microsoft.com/fwlink/?LinkID=264782&clcid=0x409">Privacy Statement</a></li>
+                            <li><a href="https://go.microsoft.com/fwlink/?LinkID=266231&clcid=0x409">Terms of Use</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-md-6 text-right">
-                    <partial name="_LoginPartial" />
+                    @*<partial name="_LoginPartial" />*@
                 </div>
             </div>
         </footer>
