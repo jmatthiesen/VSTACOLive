@@ -22,9 +22,9 @@
     "Microsoft.Framework.Logging.Console": "1.0.0-beta8",
     "Microsoft.Framework.Logging.Debug": "1.0.0-beta8",
     "Microsoft.ApplicationInsights.AspNet": "1.0.0-beta8",
-    "WindowsAzure.Storage": "6.0.1-preview",
-    "Google.Apis.YouTube.v3": "1.9.2.1490",
-    "Newtonsoft.Json": "7.0.1"
+    "Newtonsoft.Json": "7.0.1",
+    "Google.Apis.YouTube.v3": "1.9.2.1500",
+    "WindowsAzure.Storage": "6.1.0"
   },
   "commands": {
     "web": "Microsoft.AspNet.Server.Kestrel"
