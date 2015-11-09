@@ -1,22 +1,62 @@
 ﻿/*csslint qualified-headings:false, unique-headings:false, known-properties:false, universal-selector:false*/
 
 body {
+    color: #333;
     padding-bottom: 20px;
     font-family: 'Segoe UI', Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 16px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1 {
+    font-family: 'Segoe UI Semilight', 'Segoe UI Light', 'Segoe UI', Tahoma, Arial, sans-serif;
+}
+
+h2, h3, h4, h5, h6 {
     font-family: 'Segoe UI Light', 'Segoe UI', Tahoma, Arial, Helvetica, sans-serif;
 }
 
-.jumbotron {
-    background: #5c2d91;
-    background-size: 920px;
-    color: #fff;
-    min-height: 350px;
+.navbar {
+    min-height: 37px;
+    margin-bottom: 0px;
+    padding-top: 9px;
 }
 
-@media (min-width: 920px) {
+    .navbar-brand {
+        height: 28px;
+        padding: 0px 10px;
+    }
+
+    .navbar-inverse {
+        background-color: #000;
+    }
+
+    .navbar .navbar-text {
+        border-color: #999;
+        border-width: 0px;
+        border-left-width: 1px;
+        border-style: solid;
+        color: #999;
+        font-weight: normal;
+        margin: 0px;
+        margin-top: -5px;
+        padding-left: 10px;
+    }
+
+
+.container .jumbotron {
+    color: #fff;
+    padding: 0px;
+}
+
+    .jumbotron a, .jumbotron a:hover {
+        color: #fff;
+    }
+
+    .jumbotron .hero-text {
+        background-color: #405d6b;
+    }
+
+/*@media (min-width: 920px) {
     .jumbotron {
         background-size: 100%;
     }
@@ -26,25 +66,7 @@ h1, h2, h3, h4, h5, h6 {
     .jumbotron {
         background-size: 1440px;
     }
-}
-
-/* Used with the VS image sprite to show just the VS logo on the page.
-    TODO: Simplify this in a future version.
-*/
-#siteLogoLink > a {
-    display:inline-block;
-    text-indent: -999px;
-}
-
-#siteLogoLink > a::before {
-    background: url('../images/VSImageSprite.png?v=635805485122953252') no-repeat scroll -251px 0;
-    width: 160px;
-    content: "";
-    display: block;
-    height: 28px;
-    overflow: hidden;
-}
-
+}*/
 
 h2 a, h2 a:hover, h2 a:focus, h2 a:active, h2 a:visited {
     color: #fff;
@@ -65,18 +87,32 @@ textarea {
 }
 
 a, a:hover {
-    color: rgb(38, 124, 178);
+    color: #333;
 }
 
-.btn, .thumbnail, input[type='text'], input[type='url'], input[type='datetime'], .label, .dropdown-menu {
+.btn {
+    font-size: 15px;    
+}
+
+.btn, .thumbnail, input[type='text'], input[type='url'], input[type='datetime'], .navbar, .label, .dropdown-menu {
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
     border-radius: 0;
 }
 
-    .btn-primary {
-        background-color: #0054a3;
+.btn-default, .btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+    .btn-default:hover, .btn-default:focus {
+        border-color: #8c8c8c;
     }
+
+.btn-primary {
+    background-color: #0054a3;
+}
 
 .dropdown-menu > li > a:hover {
     background-color: #0054a3;
@@ -154,12 +190,89 @@ footer {
     opacity: 0.6;
 }
 
-    .youtube-show .show-date {
-        font-size: 0.8em;
-    }
+.youtube-show .show-date {
+    font-size: 0.8em;
+}
 
 .label-new-show {
     font-size: 0.6em;
+}
+
+@media (min-width: 1180px) {
+    .jumbotron {
+        background: url('../images/1180_HeroImage.png') no-repeat;
+    }
+
+    .jumbotron, .jumbotron .hero-text {
+        height: 534px;
+    }
+
+    .jumbotron h1 {
+        font-size: 43px;
+        margin-top: 80px;
+        margin-bottom: 0px;
+    }
+
+    .jumbotron .next-episode p {
+        font-size: 16px;
+    }
+
+    .jumbotron .next-episode h2 {
+        font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        font-size: 18px;
+    }
+
+    .jumbotron .next-episode .show-date {
+        font-size: 28px;
+    }
+
+    .jumbotron .next-episode .show-date-time {
+        font-size: 18px;
+    }
+
+    .jumbotron .next-episode .countdown-container {
+        background-color: #000;
+        background: rgba(0,0,0,0.15);
+        height: 56px;
+        line-height: 52px;
+    }
+
+    .jumbotron .next-episode .countdown {
+        display: inline-block;
+        font-family: 'Segoe UI Semibold', 'Segoe UI', Tahoma, Arial, sans-serif;
+        font-size: 23px;
+        vertical-align: middle;
+        margin: 0px;
+    }
+
+    .next-episode .container .row h2 {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .next-episode .container .row:nth-child(1) {
+        margin-top: 14px;
+    }
+
+    .next-episode .container .row:nth-child(2) {
+        margin-top: 30px;
+    }
+
+    .next-episode .container .row:nth-child(3) {
+        margin-top: 10px;
+    }
+
+    .next-episode .container .row:nth-child(4) {
+        margin-top: 20px;
+    }
+
+    .next-episode .container .row:nth-child(5) {
+        margin-top: 32px;
+    }
+
+    .next-episode .container .row:nth-child(6) {
+        margin-top: 32px;
+    }
 }
 
 /* Extra-Small devices (phones, 768px and below) */

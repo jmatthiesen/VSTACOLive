@@ -23,11 +23,10 @@
         return hour + ":" + mins + tt;
     }
 
-    function formatDateTime(dateTime) {
+    function formatDate(dateTime) {
         return dateTime.getDate() + " " +
                monthName(dateTime.getMonth()) + ", " +
-               dateTime.getFullYear() + " at " +
-               formatTime(dateTime.getHours(), dateTime.getMinutes());
+               dateTime.getFullYear();
     }
 
     function extractTimeZoneName(dateString) {
@@ -114,12 +113,17 @@
                 showDetailsEl = window.document.getElementById(elementId),
                 showTimeUtc = getNextShowTime(showDetailsEl),
 
-            // Set the show time display
-            showTimeEl = showDetailsEl.querySelector("[data-part='showTime']"),
-            timeZoneName = extractTimeZoneName(showTimeUtc.toString());
+                // Set the show time display
+                showDateEl = showDetailsEl.querySelector("[data-part='showDate']"),
+                showTimeEl = showDetailsEl.querySelector("[data-part='showTime']"),
+                timeZoneName = extractTimeZoneName(showTimeUtc.toString());
 
-            showTimeEl.textContent = formatDateTime(showTimeUtc) + " (" + timeZoneName + ")";
-            showTimeEl.className = "";
+            
+            showDateEl.textContent = formatDate(showTimeUtc);
+            showDateEl.className = "show-date";
+
+            showTimeEl.textContent = formatTime(showTimeUtc.getHours(), showTimeUtc.getMinutes()) + " (" + timeZoneName + ")";
+            showTimeEl.className = "show-time";
 
             // Start the countdown
             countdownEl = showDetailsEl.querySelector("[data-part='countdown']");
@@ -131,4 +135,20 @@
         }
     };
 
+    window.addEventListener("load", function () {
+        // When Google Analytics is available, attach click events on the page
+        if (typeof(ga) != "undefined") {
+            var calendarMenuOptions = document.getElementById("addToCalendarMenu").getElementsByTagName("a");
+
+            for (var i = 0; i < calendarMenuOptions.length; i++) {
+                addClickHandler(calendarMenuOptions[i]);
+            }
+        }
+    });
+
+    function addClickHandler(element) {
+        element.addEventListener("click", function () {
+            ga("send", "event", "outgoing", element.href);
+        })
+    }
 })(window);
