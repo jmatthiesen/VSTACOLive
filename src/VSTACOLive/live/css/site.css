@@ -56,18 +56,6 @@ h2, h3, h4, h5, h6 {
         background-color: #405d6b;
     }
 
-/*@media (min-width: 920px) {
-    .jumbotron {
-        background-size: 100%;
-    }
-}
-
-@media (min-width: 1440px) {
-    .jumbotron {
-        background-size: 1440px;
-    }
-}*/
-
 h2 a, h2 a:hover, h2 a:focus, h2 a:active, h2 a:visited {
     color: #fff;
 }
@@ -134,11 +122,11 @@ a, a:hover {
     color: initial;
 }
 
+.stage {
+    background-color: #EEE;
+}
+
 .hangout-embed {
-    margin-top: 30px;
-    -webkit-box-shadow: 0 0 5px 5px rgba(255, 255, 255, .4);
-    -moz-box-shadow: 0 0 5px 5px rgba(255, 255, 255, .4);
-    box-shadow: 0 0 5px 5px rgba(255, 255, 255, .4);
     background: #212121;
 }
 
@@ -146,13 +134,19 @@ a, a:hover {
         background: #212121;
     }
 
-.icon-outlook {
-    background: transparent url(outlook.png) no-repeat top center;
-    background-size: contain;
-    display: inline-block;
-    height: 16px;
-    width: 16px;
+.how-to {
+    float: left;
 }
+
+    .how-to h1 {
+        color: #0092DD;
+        font-family: 'Segoe UI Semibold', 'Segoe UI', Tahoma, Arial, sans-serif;
+        font-size: 28px;
+    }
+        
+    .how-to p, .how-to li {
+        font-size: 18px;
+    }
 
 .thumbnail .caption h3 {
     margin-top: 0;
@@ -198,7 +192,38 @@ footer {
     font-size: 0.6em;
 }
 
-@media (min-width: 1180px) {
+.label-on-air {
+    font-size: 28px;
+    font-weight: normal;
+    height: 50px;
+    padding: 0.3em 0.6em;
+}
+
+/* Extra-Small devices (phones, 768px and below) */
+@media (max-width: 768px) {
+    .youtube-show {
+        max-width: 480px;
+    }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .youtube-show {
+        height: 360px;
+    }
+
+    .stage {
+        padding: 5px 10px 10px;
+    }
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .youtube-show {
+        height: 320px;
+    }
+
     .jumbotron {
         background: url('../images/1180_HeroImage.png') no-repeat;
     }
@@ -273,31 +298,14 @@ footer {
     .next-episode .container .row:nth-child(6) {
         margin-top: 32px;
     }
-}
 
-/* Extra-Small devices (phones, 768px and below) */
-@media (max-width: 768px) {
-    .youtube-show {
-        max-width: 480px;
+    .stage {
+        padding: 64px 64px 64px;
     }
 }
 
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-    .youtube-show {
-        height: 360px;
-    }
-}
-
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-    .youtube-show {
-        height: 320px;
-    }
-}
-
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
+/* Large devices (large desktops, 1170px and up) */
+@media (min-width: 1170px) {
     .youtube-show {
         height: 360px;
     }

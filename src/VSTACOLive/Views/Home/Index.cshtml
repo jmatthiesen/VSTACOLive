@@ -18,24 +18,41 @@
         </div>
 
     </nav>
-    @if (Model.IsOnAir)
-    {
-        <span class="label label-danger"><strong>ON AIR</strong></span>
-    }
-    else if (Model.HasAdminMessage)
-    {
-        <span class="label label-warning"><strong>STANDBY</strong></span>
-    }
     <div class="container">
+        <div class="row hidden-xs">
+            @if (Model.IsOnAir)
+            {
+                <span class="label label-danger label-on-air col-sm-offset-10 col-sm-2">ON AIR</span>
+            }
+            else if (Model.HasAdminMessage)
+            {
+                <span class="label label-warning col-sm-offset-11 col-sm-1">STANDBY</span>
+            }
+        </div>
+        
         @if (Model.HasAdminMessage)
         {
-            <h2 class="text-center">
-                @Model.AdminMessage
-            </h2>
+            <div class="row">
+                <h2 class="text-center">
+                    @Model.AdminMessage
+                </h2>
+            </div>
         }
         else if (Model.IsOnAir)
         {
-            <partial name="_HangoutEmbed" model="Model"></partial>
+            <div class="row stage">
+                <partial name="_HangoutEmbed" model="Model"></partial>
+                <div class="how-to">
+                    <h1>Ask us your questions</h1>
+                    <p>Add your question to our list for the currently live episode. There are two ways to do it:</p>
+                    <ol>
+                        <li>For the best experience – click on the “Be part of the conversation” overlay in the video.<br/>
+                        When you’ve joined, click on the <img src="~/images/hangout-apps-button.png" alt="Hangout Apps"/> icon and select the Q&A tool.</li>
+                        <li>Tweet us your question on Twitter, using the <a href="http://www.twitter.com/#vstacolive">#VSTACOLive</a> hashtag.</li>
+                    </ol>
+                    <p>You question will show up on screen when we’re ready to answer it.</p>
+                </div>
+            </div>
         }
         else
         {

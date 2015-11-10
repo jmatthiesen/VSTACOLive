@@ -22,10 +22,16 @@ namespace live.asp.net.Controllers
         }
 
         [Route("/")]
-        public async Task<IActionResult> Index(bool? disableCache)
+        public async Task<IActionResult> Index(bool? disableCache, bool? demoOnAir)
         {
             var liveShowDetails = await _liveShowDetails.LoadAsync();
             var showList = new ShowList() { Shows = new List<Show>() };// await _showsService.GetRecordedShowsAsync(User, disableCache ?? false);
+
+            if (demoOnAir == true)
+            {
+                liveShowDetails = new LiveShowDetails();
+                liveShowDetails.LiveShowEmbedUrl = "tbd";
+            }
 
             return View(new HomeViewModel
             {
