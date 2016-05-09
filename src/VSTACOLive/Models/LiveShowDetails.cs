@@ -9,6 +9,8 @@ namespace live.asp.net.Models
     {
         public string LiveShowEmbedUrl { get; set; }
 
+        public string LiveShowRedirectUrl { get; set; }
+
         public DateTime? NextShowDateUtc { get; set; }
 
         public string AdminMessage { get; set; }

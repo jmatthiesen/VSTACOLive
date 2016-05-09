@@ -56,6 +56,22 @@ h2, h3, h4, h5, h6 {
         background-color: #405d6b;
     }
 
+    .jumbotron .next-episode .countdown-container {
+        background-color: #000;
+        background: rgba(0,0,0,0.15);
+    }
+
+    .jumbotron .next-episode .countdown {
+        display: inline-block;
+        font-family: 'Segoe UI Semibold', 'Segoe UI', Tahoma, Arial, sans-serif;
+        vertical-align: middle;
+        margin: 0px;
+    }
+
+    .jumbotron .next-episode h2 {
+        font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    }
+
 h2 a, h2 a:hover, h2 a:focus, h2 a:active, h2 a:visited {
     color: #fff;
 }
@@ -78,11 +94,7 @@ a, a:hover {
     color: #333;
 }
 
-.btn {
-    font-size: 15px;    
-}
-
-.btn, .thumbnail, input[type='text'], input[type='url'], input[type='datetime'], .navbar, .label, .dropdown-menu {
+.btn, .thumbnail, input[type='text'], input[type='url'], input[type='datetime'], .navbar, .label, .dropdown-menu, .container .jumbotron {
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
     border-radius: 0;
@@ -136,14 +148,15 @@ a, a:hover {
 
 .how-to {
     float: left;
+    padding: 0px 10px;
 }
 
-    .how-to h1 {
+    .how-to h2 {
         color: #0092DD;
         font-family: 'Segoe UI Semibold', 'Segoe UI', Tahoma, Arial, sans-serif;
         font-size: 28px;
-    }
-        
+    } 
+
     .how-to p, .how-to li {
         font-size: 18px;
     }
@@ -199,29 +212,119 @@ footer {
     padding: 0.3em 0.6em;
 }
 
-/* Extra-Small devices (phones, 768px and below) */
-@media (max-width: 768px) {
+/* Default to support Extra-Small devices (phones, 768px and below) */
+    .btn {
+        font-size: 12px;    
+    }
+
     .youtube-show {
         max-width: 480px;
     }
-}
+
+    
+    .jumbotron, .jumbotron .hero-text {
+        height: 308px;
+    }
+
+    .jumbotron h1 {
+        font-size: 22px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .jumbotron .next-episode p {
+        font-size: 11px;
+    }
+
+    .jumbotron .next-episode h2 {
+        font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        font-size: 14px;
+    }
+
+    .jumbotron .next-episode .show-date {
+        font-size: 16px;
+    }
+
+    .jumbotron .next-episode .show-date-time {
+        font-size: 11px;
+    }
+
+    .jumbotron .next-episode .countdown-container {
+        height: 39px;
+        line-height: 35px;
+    }
+
+    .jumbotron .next-episode .countdown {
+        font-size: 14px;
+    }
+
+    .next-episode .container .row h2 {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .next-episode .container .row:nth-child(1) {
+        margin-top: 12px;
+    }
+
+    .next-episode .container .row:nth-child(2) {
+        margin-top: 14px;
+    }
+
+    .next-episode .container .row:nth-child(3) {
+        margin-top: 5px;
+    }
+
+    .next-episode .container .row:nth-child(4) {
+        margin-top: 13px;
+    }
+
+    .next-episode .container .row:nth-child(5) {
+        margin-top: 18px;
+    }
+
+    .next-episode .container .row:nth-child(6) {
+        margin-top: 14px;
+    }
+
+    .stage {
+        padding: 0px 10px;
+    }
+
+    .stage h1 {
+        font-size: 28px;
+        margin: 0px;
+        line-height: 28px;
+        padding-top: 0.3em;
+    }
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
     .youtube-show {
-        height: 360px;
+        min-height: 400px;
     }
 
-    .stage {
-        padding: 5px 10px 10px;
+    .jumbotron {
+        background: url('../images/640_HeroImage.png') no-repeat;
     }
 
+    .jumbotron h1 {
+        margin-top: 23px;
+    }
+
+     .next-episode .container .row:nth-child(2) {
+        margin-top: 24px;
+    }
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+    .btn {
+        font-size: 15px;    
+    }
+
     .youtube-show {
-        height: 320px;
+        min-height: 400px;
     }
 
     .jumbotron {
@@ -243,7 +346,6 @@ footer {
     }
 
     .jumbotron .next-episode h2 {
-        font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
         font-size: 18px;
     }
 
@@ -256,18 +358,12 @@ footer {
     }
 
     .jumbotron .next-episode .countdown-container {
-        background-color: #000;
-        background: rgba(0,0,0,0.15);
         height: 56px;
         line-height: 52px;
     }
 
     .jumbotron .next-episode .countdown {
-        display: inline-block;
-        font-family: 'Segoe UI Semibold', 'Segoe UI', Tahoma, Arial, sans-serif;
         font-size: 23px;
-        vertical-align: middle;
-        margin: 0px;
     }
 
     .next-episode .container .row h2 {
@@ -300,13 +396,15 @@ footer {
     }
 
     .stage {
-        padding: 64px 64px 64px;
+        padding: 0px 64px;
     }
-}
 
-/* Large devices (large desktops, 1170px and up) */
-@media (min-width: 1170px) {
-    .youtube-show {
-        height: 360px;
+    .stage h1 {
+        font-size: 36px;
+        line-height: 26px;
+    }
+
+    .stage h2 {
+        font-size: 28px;
     }
 }

@@ -18,161 +18,170 @@
         </div>
 
     </nav>
-    <div class="container">
-        <div class="row hidden-xs">
-            @if (Model.IsOnAir)
-            {
-                <span class="label label-danger label-on-air col-sm-offset-10 col-sm-2">ON AIR</span>
-            }
-            else if (Model.HasAdminMessage)
-            {
-                <span class="label label-warning col-sm-offset-11 col-sm-1">STANDBY</span>
-            }
-        </div>
-        
-        @if (Model.HasAdminMessage)
-        {
-            <div class="row">
-                <h2 class="text-center">
-                    @Model.AdminMessage
-                </h2>
-            </div>
-        }
-        else if (Model.IsOnAir)
-        {
-            <div class="row stage">
-                <partial name="_HangoutEmbed" model="Model"></partial>
-                <div class="how-to">
-                    <h1>Ask us your questions</h1>
-                    <p>Add your question to our list for the currently live episode. There are two ways to do it:</p>
-                    <ol>
-                        <li>For the best experience – click on the “Be part of the conversation” overlay in the video.<br/>
-                        When you’ve joined, click on the <img src="~/images/hangout-apps-button.png" alt="Hangout Apps"/> icon and select the Q&A tool.</li>
-                        <li>Tweet us your question on Twitter, using the <a href="http://www.twitter.com/#vstacolive">#VSTACOLive</a> hashtag.</li>
-                    </ol>
-                    <p>You question will show up on screen when we’re ready to answer it.</p>
-                </div>
-            </div>
-        }
-        else
-        {
-            <div class="jumbotron">
-                <div class="row">
-                    <div class="col-lg-5 col-lg-offset-7 hero-text">
-                        <h1 class="text-center">
-                            Cordova Tools Q&amp;A
-                        </h1>
+    @if (Model.LiveShowRedirectUrl.Length > 0)
+    {
+        <div>Redirecting...</div>
+    }
+    else
+    {
+        <div class="container @(Model.IsOnAir ? "stage" : "")">
 
-                        <div class="next-episode text-center">
+            @if (Model.IsOnAir || Model.HasAdminMessage)
+            {
+                <a href="~/views/home/index.cshtml">~/views/home/index.cshtml</a>
+                <div class="row hidden-xs">
+                    <div class="col-sm-6">
+                        <h1>Cordova Tools Q&amp;A</h1>
+                    </div>
+                    @if (Model.IsOnAir)
+                    {
+                        <span class="label label-danger label-on-air col-sm-offset-4 col-sm-2">ON AIR</span>
+                    }
+                    else if (Model.HasAdminMessage)
+                    {
+                        <span class="label label-warning col-sm-offset-11 col-sm-1">STANDBY</span>
+                    }
+                </div>
+            }
+
+            @if (Model.HasAdminMessage)
+            {
+                <div class="row">
+                    <h2 class="text-center">
+                        @Model.AdminMessage
+                    </h2>
+                </div>
+            }
+            else if (Model.IsOnAir)
+            {
+                <div class="row">
+                    <partial name="_HangoutEmbed" model="Model"></partial>
+                    @*<div class="sign-ups">
+                            <a href="http://www.taco.tools/vscode" class="btn btn-warning" target="_blank">SIGN-UP: Visual Studio Code + Cordova &gt;&gt;</a>
+                            <a href="http://www.instant.ly/s/8fDdZ" class="btn btn-warning" target="_blank">Rank your TACO CLI Wish List &gt;&gt;</a>
+                            <a href="https://taco.visualstudio.com/Content/mc-forms/mc-signup.html" class="btn btn-warning" target="_blank">SIGN UP: VS TACO newsletter &gt;&gt;</a>
+                        </div>*@
+                    <div class="how-to">
+                        <h2>Ask us your questions</h2>
+                        <p>Add your question to our list for the currently live episode. There are two ways to do it:</p>
+                        <ol>
+                            <li>
+                                For the best experience – click on the "Be part of the conversation" overlay in the video.<br />
+                                When you’ve joined, click on the <img src="~/images/hangout-apps-button.png" alt="Hangout Apps" /> icon and select the Q&A tool.
+                            </li>
+                            <li>Tweet us your question on Twitter, using the <a href="http://www.twitter.com/#vstaco" target="_blank">#VSTACO</a> hashtag.</li>
+                        </ol>
+                        <p>You question will show up on screen when we’re ready to answer it.</p>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="jumbotron">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-6 col-lg-5 col-lg-offset-7 hero-text">
+                            <h1 class="text-center">
+                                Cordova Tools Q&amp;A
+                            </h1>
+
+                            <div class="next-episode text-center">
                                 <div class="container">
-                            @if (Model.NextShowScheduled)
-                            {
-                                    <div id="nextShowDetails"
-                                         data-utc-year="@Model.NextShowDateUtc.Value.Year"
-                                         data-utc-month="@(Model.NextShowDateUtc.Value.Month-1)"
-                                         data-utc-day="@Model.NextShowDateUtc.Value.Day"
-                                         data-utc-hour="@Model.NextShowDateUtc.Value.Hour"
-                                         data-utc-min="@Model.NextShowDateUtc.Value.Minute">
-                                        <div class="row">
-                                            <h2>Next episode streaming live from this site on</h2>
-                                        </div>
-                                        <div class="row show-date-time">
-                                            <div data-part="showDate" class="hidden">
-                                                @Model.NextShowDateUtc.Value.ToString("D")
+                                    @if (Model.NextShowScheduled)
+                                    {
+                                        <div id="nextShowDetails"
+                                             data-utc-year="@Model.NextShowDateUtc.Value.Year"
+                                             data-utc-month="@(Model.NextShowDateUtc.Value.Month - 1)"
+                                             data-utc-day="@Model.NextShowDateUtc.Value.Day"
+                                             data-utc-hour="@Model.NextShowDateUtc.Value.Hour"
+                                             data-utc-min="@Model.NextShowDateUtc.Value.Minute">
+                                            <div class="row">
+                                                <h2>Next episode streaming live from this site on</h2>
+                                            </div>
+                                            <div class="row show-date-time">
+                                                <div data-part="showDate" class="hidden">
+                                                    @Model.NextShowDateUtc.Value.ToString("D")
+                                                </div>
+                                            </div>
+                                            <div class="row show-date-time">
+                                                <h2>
+                                                    TIME:
+                                                    <span data-part="showTime" class="hidden">
+                                                        @Model.NextShowDateUtc.Value.ToString("t")
+                                                    </span>
+                                                </h2>
+                                            </div>
+                                            <div class="row">
+                                                <div class="countdown-container col-xs-6 col-xs-offset-3">
+                                                    <h2 data-part="countdown" class="countdown"></h2>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="row show-date-time">
-                                            <h2>
-                                                TIME:
-                                                <span data-part="showTime" class="hidden">
-                                                    @Model.NextShowDateUtc.Value.ToString("t")
-                                                </span>
-                                            </h2>
-                                        </div>
                                         <div class="row">
-                                            <div class="countdown-container col-lg-6 col-lg-offset-3">
-                                                <h2 data-part="countdown" class="countdown"></h2>
+                                            <div class="btn-group">
+                                                <button id="addToCalendar" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Add to Calendar <span class="caret"></span>
+                                                </button>
+                                                <ul id="addToCalendarMenu" class="dropdown-menu dropdown-menu-left" aria-labelledby="addToCalendar">
+                                                    <li><a asp-action="GetiCal" asp-protocol="http">Download iCalendar (ICS) file</a></li>
+                                                    <li><a asp-action="GetiCal" asp-protocol="webcals">Add using webcal</a></li>
+                                                    <li><a href="@Model.AddToGoogleUrl" target="_blank">Add to Google Calendar</a></li>
+                                                </ul>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="btn-group">
-                                            <button id="addToCalendar" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Add to Calendar <span class="caret"></span>
-                                            </button>
-                                            <ul id="addToCalendarMenu" class="dropdown-menu dropdown-menu-left" aria-labelledby="addToCalendar">
-                                                <li><a asp-action="GetiCal" asp-protocol="http">Download iCalendar (ICS) file</a></li>
-                                                <li><a asp-action="GetiCal" asp-protocol="webcals">Add using webcal</a></li>
-                                                <li><a href="@Model.AddToGoogleUrl" target="_blank">Add to Google Calendar</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <cache>
-                                        <environment names="Development">
-                                            <script src="~/js/site.js" inline="false"></script>
-                                        </environment>
-                                        <environment names="Staging,Production">
-                                            <script src="~/js/site.min.js" inline="false"></script>
-                                        </environment>
-                                    </cache>
-                                    <script>
-                                        (function () {
-                                            window.siteJs.setNextShowDetails("nextShowDetails");
-                                        })();
-                                    </script>
                                     }
                                     else
                                     {
-                                    <h2>Streaming Live Every Thursday</h2>
-                                    <p>Alternating between 9:30 AM and 3:45 PM Pacific Time, week to week.</p>
+                                        <h2>Streaming Live Every Month</h2>
                                     }
                                     <div class="row">
-                                        <p>Join the Visual Studio engineering team via live video chat every Thursday. Ask your questions via the chat window or Twitter with <a href="http://twitter.com/#vstaco" target="_blank">#vstaco</a>.</p>
+                                        <p>Join the Visual Studio engineering team via live video chat every month. Ask your questions via the chat window or Twitter with <a href="http://twitter.com/#vstaco" target="_blank">#vstaco</a>.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                            }
+            }
+        </div>
+
+        @if (Model.ShowPreviousShows)
+        {
+            <div class="container">
+                <div class="row"><h2 class="text-center">Episodes</h2></div>
+                <div class="row">
+                    @foreach (var show in Model.PreviousShows)
+                    {
+                        <partial name="_YouTubeShow" model="show"></partial>
+                    }
+                </div>
+
+                @if (Model.ShowMoreShowsUrl)
+                {
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <a href="@Model.MoreShowsUrl" class="btn btn-primary">See More Episodes</a>
                         </div>
-                        }
-
-                        @if (Model.ShowPreviousShows)
-                        {
-                            <div class="container">
-                                <div class="row"><h2>Previous Episodes</h2></div>
-                                <div class="row">
-                                    @foreach (var show in Model.PreviousShows)
-                                    {
-                                        <partial name="_YouTubeShow" model="show"></partial>
-                                    }
-                                </div>
-
-                                @if (Model.ShowMoreShowsUrl)
-                                {
-                                    <div class="row">
-                                        <div class="col-md-12 text-center">
-                                            <a href="@Model.MoreShowsUrl" class="btn btn-primary">See More Episodes</a>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-                        }
-
-                        @section Scripts {
-                            <environment names="Development">
-                                <script src="~/lib/jquery/dist/jquery.js"></script>
-                                <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-                            </environment>
-                            <environment names="Staging,Production">
-                                <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
-                                        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                                        asp-fallback-test="window.jQuery">
-                                </script>
-                                <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
-                                        asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                                        asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-                                </script>
-                            </environment>
-                        }
+                    </div>
+                }
+            </div>
+        }
+    }
+}
+@section Scripts {
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" inline="false"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/js/site.min.js" inline="false"></script>
+    </environment>
+}

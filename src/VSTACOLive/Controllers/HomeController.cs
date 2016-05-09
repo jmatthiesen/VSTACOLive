@@ -25,7 +25,7 @@ namespace live.asp.net.Controllers
         public async Task<IActionResult> Index(bool? disableCache, bool? demoOnAir)
         {
             var liveShowDetails = await _liveShowDetails.LoadAsync();
-            var showList = new ShowList() { Shows = new List<Show>() };// await _showsService.GetRecordedShowsAsync(User, disableCache ?? false);
+            var showList = await _showsService.GetRecordedShowsAsync(User, disableCache ?? false);
 
             if (demoOnAir == true)
             {
@@ -33,11 +33,17 @@ namespace live.asp.net.Controllers
                 liveShowDetails.LiveShowEmbedUrl = "tbd";
             }
 
+            if (!string.IsNullOrWhiteSpace(liveShowDetails.LiveShowRedirectUrl))
+            {
+                return Redirect(liveShowDetails.LiveShowRedirectUrl);
+            }
+
             return View(new HomeViewModel
             {
                 AdminMessage = liveShowDetails?.AdminMessage,
                 NextShowDateUtc = liveShowDetails?.NextShowDateUtc,
                 LiveShowEmbedUrl = liveShowDetails?.LiveShowEmbedUrl,
+                LiveShowRedirectUrl = liveShowDetails?.LiveShowRedirectUrl?.Trim(),
                 PreviousShows = showList.Shows,
                 MoreShowsUrl = showList.MoreShowsUrl
             });

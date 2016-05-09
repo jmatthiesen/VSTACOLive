@@ -33,8 +33,8 @@ namespace live.asp.net
 
             if (_env.IsDevelopment())
             {
-                //builder.AddUserSecrets();
-                builder.AddApplicationInsightsSettings(developerMode: true);
+                builder.AddUserSecrets();
+                //builder.AddApplicationInsightsSettings(developerMode: true);
             }
 
             builder.AddEnvironmentVariables();

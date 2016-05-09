@@ -1,6 +1,4 @@
-﻿
-
-(function (window, undefined) {
+﻿(function (window, undefined) {
     "use strict";
 
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -107,10 +105,9 @@
     }
 
     window.siteJs = {
-        setNextShowDetails: function (elementId) {
+        setNextShowDetails: function (showDetailsEl) {
             // Get the show details
             var countdownEl,
-                showDetailsEl = window.document.getElementById(elementId),
                 showTimeUtc = getNextShowTime(showDetailsEl),
 
                 // Set the show time display
@@ -118,7 +115,7 @@
                 showTimeEl = showDetailsEl.querySelector("[data-part='showTime']"),
                 timeZoneName = extractTimeZoneName(showTimeUtc.toString());
 
-            
+
             showDateEl.textContent = formatDate(showTimeUtc);
             showDateEl.className = "show-date";
 
@@ -136,19 +133,33 @@
     };
 
     window.addEventListener("load", function () {
-        // When Google Analytics is available, attach click events on the page
-        if (typeof(ga) != "undefined") {
-            var calendarMenuOptions = document.getElementById("addToCalendarMenu").getElementsByTagName("a");
+        // Show the show countdown when the show details element is on screen
+        var showDetailsEl = document.getElementById("nextShowDetails");
+        if (showDetailsEl) {
+            window.siteJs.setNextShowDetails(showDetailsEl);
+        }
 
-            for (var i = 0; i < calendarMenuOptions.length; i++) {
-                addClickHandler(calendarMenuOptions[i]);
+        // When Google Analytics is available, attach click events on the page
+        if (typeof (ga) != "undefined") {
+            var calendarMenu = document.getElementById("addToCalendarMenu");
+            if (calendarMenu) {
+                addClickHandleToElements(calendarMenu.getElementsByTagName("a"));
             }
+            addClickHandleToElements(document.getElementsByClassName("btn"));
         }
     });
+
+    function addClickHandleToElements(elementsCollection) {
+        if (elementsCollection !== null && elementsCollection.length) {
+            for (var i = 0; i < elementsCollection.length; i++) {
+                addClickHandler(elementsCollection[i]);
+            }
+        }
+    }
 
     function addClickHandler(element) {
         element.addEventListener("click", function () {
             ga("send", "event", "outgoing", element.href);
-        })
+        });
     }
 })(window);

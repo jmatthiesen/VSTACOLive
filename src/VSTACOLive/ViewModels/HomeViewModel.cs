@@ -18,6 +18,8 @@ namespace live.asp.net.ViewModels
 
         public string LiveShowEmbedUrl { get; set; }
 
+        public string LiveShowRedirectUrl { get; set; }
+
         public DateTime? NextShowDateUtc { get; set; }
 
         public bool NextShowScheduled => NextShowDateUtc.HasValue;
