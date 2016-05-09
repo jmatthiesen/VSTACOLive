@@ -1,11 +1,13 @@
-## live.asp.net
-Code for the ASP.NET Community Stand-up site.
+## taco.visualstudio.com/live
+Code for the Visual Studio Tools for Apache Cordova Live Q&A site.
 
-Staging - http://asp-standup-staging.azurewebsites.net/
+Production - http://taco.visualstudio.com/live/
 
-Production - http://live.asp.net/
+Source for this project is based on http://live.asp.net.
 
-### Local Development Configuration
+### Local Development Configuration (work in progress)
+**Support is not yet available for reading config settings from Azure, nor can you use the admin site.**
+
 To run the site locally with live data and login, you'll need some configuration values in your user secrets store.
 If the values aren't found, hard-coded YouTube sample data will be used, and the next show details will be saved to
 the root of the app in a JSON file.
